@@ -1,69 +1,38 @@
 package cz.borec.reverseRESTService.service;
 
-import java.util.regex.Pattern;
-
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class ReverseService extends ReverseServiceBase {
-	
-	private static final String SPACE = " ";
-	private static final String PATTERN = SPACE + "+";
-	private Pattern spaceCharsEliminator;
-	
-	
-	public ReverseService() {
-		super();
-		
-		this.spaceCharsEliminator = Pattern.compile(PATTERN);
-		
-		
-	}
 
-
-	private boolean[] index(String input) {
-		boolean[] bitmap = new boolean[input.length()];
-		for (int i = 0; i < bitmap.length; i++) {
-			bitmap[i] = CHARS.contains(input.charAt(i));
-		}
-		return bitmap;
-	}
+	private static final char SPACE = ' ';
 	
-	
-	protected String reverseInternal(String input) {
-		return new StringBuffer(input).reverse().toString();
-	}
-	
+	@Override
 	public String reverse(String input) {
 		if(input == null) return null;
-		boolean[] bitmap = index(input);
-		String reverse = reverseInternal(input);
-		String retval = convertUpperCase(reverse, bitmap);
-		retval = removeSpaces(retval);
-		return retval;
+		return reverseInternal(input);
 	}
 
-
-	private String removeSpaces(String retval) {
-		
-		return this.spaceCharsEliminator.matcher(retval).replaceAll(SPACE);
-		
-		//return retval.replaceAll(PATTERN, " ");
-
-	}
-
-
-	private String convertUpperCase(String input, boolean[] bitmap) {
-		char[] retvalue = new char[bitmap.length];
-		for (int i = 0; i < input.length(); i++) {
-			char c = input.charAt(i);
-			retvalue[i] = bitmap[i] ? Character.toUpperCase(c) : Character.toLowerCase(c);
+	/**
+	 * Implements a string reverse algorithm.
+	 * Positions with letters {a, e, i, o, u} are Uppercased otherwise lowercased,
+	 * For the given input 'Ahoj, jak se máš?' it returns '?šÁm es kaj ,joha'.
+	 * @param input
+	 * @return
+	 */
+	protected String reverseInternal(String input) {
+		char current, previous = (char)-1; // some initial value
+	    StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < input.length() ; i++) {
+			current = input.charAt(input.length() - i - 1);
+			current = CHARS.contains(input.charAt(i)) ? Character.toUpperCase(current) : Character.toLowerCase(current);
+			if(!(previous == current && current == SPACE)) {
+				sb.append(current);
+			}
+			previous = current;
 		}
-		return new String(retvalue);
+		return sb.toString();
 	}
-	
-
 	
 
 }

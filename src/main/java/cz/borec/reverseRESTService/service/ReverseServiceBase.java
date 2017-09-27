@@ -13,6 +13,7 @@ public abstract class ReverseServiceBase implements ReverseServiceInterface {
 	static {
 		CHARS = new HashSet<Character>();
 		CHARS.add('a');
+		//CHARS.add('á');
 		CHARS.add('e');
 		CHARS.add('i');
 		CHARS.add('o');

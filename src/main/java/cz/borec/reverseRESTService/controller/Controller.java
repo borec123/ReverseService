@@ -5,18 +5,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.borec.reverseRESTService.service.ReverseService2;
+import cz.borec.reverseRESTService.service.ReverseService;
 
 @RestController
 public class Controller {
 
 	@Autowired
-	private ReverseService2 reverseService;
+	private ReverseService reverseService;
 
 
 	@GetMapping("/reverse/{text}")
-	public String retrieveDetailsForCourse(@PathVariable String text) {
-		return "Žluťoučký kůň. " + text + " kokot " + reverseService.reverse(text);
+	public String reverse(@PathVariable String text) {
+		return reverseService.reverse(text);
 	}
 
 }

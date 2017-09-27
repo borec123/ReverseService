@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import cz.borec.reverseRESTService.service.ReverseService2;
+import cz.borec.reverseRESTService.service.ReverseService;
 import cz.borec.reverseRESTService.service.ReverseServiceInterface;
 
 public class ReverseTest {
@@ -80,29 +80,10 @@ public class ReverseTest {
 
 	private ReverseServiceInterface getInstance() {
 		if(instance == null) {
-			instance = new ReverseService2();
+			instance = new ReverseService();
 		}
 		return instance;
 	}
 	
-	/*public static String toBin(String info){
-		if(info == null) return null;
-		  byte[] infoBin = null;
-		  Byte[] byteArray = null;
-		  try {
-		   infoBin = info.getBytes( "UTF-8" );
-		   byteArray = new Byte[infoBin.length];
-		   for (int i = 0; i < infoBin.length; i++) {
-			   byteArray[i] = Byte.valueOf(infoBin[i]);
-		   }
-		   List<Byte> list = Arrays.asList(byteArray);
-		   list.forEach(a -> System.out.println(a));
-		   System.out.println("infoBin: "+infoBin);
-		  }
-		  catch (Exception e){
-		   System.out.println(e.toString());
-		  }
-		  return infoBin.toString();
-		}*/
 
 }
