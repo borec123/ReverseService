@@ -5,11 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import cz.borec.reverseRESTService.service.ReverseService;
-import cz.borec.reverseRESTService.service.ReverseServiceInterface;
 
 public class ReverseTest {
 
-	private ReverseServiceInterface instance;
+	private ReverseService instance;
 
 	@Test
 	public void testReverse1() {
@@ -78,7 +77,7 @@ public class ReverseTest {
 		return result;
 	}
 
-	private ReverseServiceInterface getInstance() {
+	private ReverseService getInstance() {
 		if(instance == null) {
 			instance = new ReverseService();
 		}
