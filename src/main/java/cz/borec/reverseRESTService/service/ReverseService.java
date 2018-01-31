@@ -54,4 +54,19 @@ public class ReverseService  {
 	}
 	
 
+	protected String reverseInternal2(String input) {
+		char current, previous = (char)-1; // some initial value
+	    StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < input.length() ; i++) {
+			current = input.charAt(input.length() - i - 1);
+			current = CHARS.contains(input.charAt(i)) ? Character.toUpperCase(current) : Character.toLowerCase(current);
+			if(!(previous == current && current == SPACE)) {
+				sb.append(current);
+			}
+			previous = current;
+		}
+		return sb.toString();
+	}
+	
+
 }
