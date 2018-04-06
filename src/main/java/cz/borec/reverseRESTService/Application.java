@@ -1,23 +1,17 @@
 package cz.borec.reverseRESTService;
 
-import java.io.IOException;
-
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
+	
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 
-	@Bean
+	//--- Spring boot servlet solution:
+/*	@Bean
 	public ServletRegistrationBean servletRegistrationBean(){
 	    return new ServletRegistrationBean(new HttpServlet() {
 			private static final long serialVersionUID = 1L;
@@ -44,6 +38,8 @@ public class Application {
 		
 		,"/servlet");
 	}
+*/
+	
 	
 /*	@Bean
 	public Servlet foo() {
@@ -62,7 +58,4 @@ public class Application {
 		};
 	}
 */	
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
 }

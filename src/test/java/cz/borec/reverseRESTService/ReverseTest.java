@@ -4,12 +4,17 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import cz.borec.reverseRESTService.service.ReverseService;
+import cz.borec.reverseRESTService.service.ReverseServiceInterface;
+import cz.borec.reverseRESTService.service.ReverseService1;
 
-public class ReverseTest {
+public class ReverseTest extends ReverseTestBase {
 
-	private ReverseService instance;
-
+	protected ReverseServiceInterface getInstance() {
+		if(instance == null) {
+			instance = new ReverseService1();
+		}
+		return instance;
+	}
 	@Test
 	public void testReverse1() {
 		assertEquals("?šÁm es kaj ,joha", test("Ahoj, jak se máš?"));
@@ -67,21 +72,9 @@ public class ReverseTest {
 		
 	}
 
-	private String test(String string) {
-		long start = System.nanoTime();
-		String result = getInstance().reverse(string);
-		long end = System.nanoTime();
-		System.out.println(result);
-
-		System.out.println("Time: " + (end - start) / 1000000.0 + " ms");
-		return result;
-	}
-
-	private ReverseService getInstance() {
-		if(instance == null) {
-			instance = new ReverseService();
-		}
-		return instance;
+	@Test
+	public void testReverse12() {
+		assertEquals("a", test("A"));
 	}
 	
 
