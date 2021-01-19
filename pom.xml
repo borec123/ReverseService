@@ -51,6 +51,14 @@
 			<scope>compile</scope>
 		</dependency>
  -->
+	 <!-- https://mvnrepository.com/artifact/javax.servlet/sip-api 
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>sip-api</artifactId>
+	     <version>2.3</version>
+	</dependency>
+-->
+
 	</dependencies>
 
 	<build>

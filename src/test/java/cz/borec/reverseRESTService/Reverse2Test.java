@@ -17,8 +17,18 @@ public class Reverse2Test extends ReverseTestBase {
 	}
 	
 	@Test
+	public void testReverse00() {
+		assertEquals(null, test(null));
+	}
+
+	@Test
+	public void testReverse0() {
+		assertEquals("", test(""));
+	}
+
+	@Test
 	public void testReverse1() {
-		assertEquals("nohÁ", test("Áhon"));
+		assertEquals("Nóha", test("ahóN"));
 	}
 
 	@Test
